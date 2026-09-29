@@ -1,183 +1,673 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Audioguida | Riserva Naturale Zompo lo Schioppo</title>
+  <title>Audioguida | Riserva Naturale Zompo lo Schioppo</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f2e9;
-  color: #243329;
-}
+    :root {
+      --green-dark: #244b37;
+      --green: #37694c;
+      --green-light: #78936f;
+      --cream: #f4f1e8;
+      --white: #ffffff;
+      --text: #263129;
+      --gold: #b87824;
+    }
 
-header {
-  background: #315c43;
-  color: white;
-  text-align: center;
-  padding: 38px 20px 32px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 30px;
-  letter-spacing: 1px;
-}
+    .hero {
+      position: relative;
+      min-height: 440px;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(18, 42, 29, 0.10),
+          rgba(18, 42, 29, 0.82)
+        ),
+        url("DSC_0049.JPG") center center / cover no-repeat;
 
-header h2 {
-  margin: 8px 0 0;
-  font-size: 17px;
-  font-weight: normal;
-}
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px 20px;
+      color: white;
+    }
 
-.intro {
-  max-width: 650px;
-  margin: auto;
-  text-align: center;
-  padding: 28px 22px 15px;
-}
+    .hero-content {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-.intro p {
-  font-size: 17px;
-  line-height: 1.5;
-}
+    .logo-box {
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      padding: 12px;
+      max-width: 270px;
+      margin: 0 auto 20px;
+    }
 
-.container {
-  max-width: 650px;
-  margin: auto;
-  padding: 10px 18px 40px;
-}
+    .logo-box img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-.tappa {
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 14px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.08);
-}
+    .hero h1 {
+      margin: 0;
+      font-size: 35px;
+      letter-spacing: 1px;
+    }
 
-.numero {
-  color: #68855d;
-  font-size: 13px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    .hero p {
+      margin: 8px 0 0;
+      font-size: 18px;
+      line-height: 1.4;
+    }
 
-.tappa h3 {
-  margin: 5px 0 14px;
-  font-size: 20px;
-}
+    .language-switch {
+      max-width: 520px;
+      margin: -1px auto 0;
+      background: white;
+      display: flex;
+      padding: 12px;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 6px 18px rgba(0,0,0,.10);
+      border-radius: 0 0 20px 20px;
+    }
 
-button {
-  width: 100%;
-  border: 0;
-  border-radius: 30px;
-  padding: 14px;
-  background: #315c43;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .lang-btn {
+      flex: 1;
+      padding: 13px 10px;
+      border: 2px solid var(--green);
+      border-radius: 30px;
+      background: white;
+      color: var(--green-dark);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-button:hover {
-  background: #244634;
-}
+    .lang-btn.active {
+      background: var(--green-dark);
+      color: white;
+    }
 
-footer {
-  text-align: center;
-  padding: 25px 20px 35px;
-  color: #68736b;
-  font-size: 13px;
-}
-</style>
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px 22px 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: var(--green-dark);
+    }
+
+    .intro p {
+      font-size: 17px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+      padding: 10px 18px 45px;
+    }
+
+    .welcome-card {
+      background: var(--green-dark);
+      color: white;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.13);
+    }
+
+    .welcome-card .small-label {
+      color: #d9e7dc;
+    }
+
+    .small-label {
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--green-light);
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 13px rgba(0,0,0,.08);
+    }
+
+    .card h3,
+    .welcome-card h3 {
+      margin: 6px 0 16px;
+      font-size: 21px;
+    }
+
+    audio {
+      width: 100%;
+      display: block;
+    }
+
+    footer {
+      background: var(--green-dark);
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 390px;
+      }
+
+      .hero h1 {
+        font-size: 31px;
+      }
+
+      .logo-box {
+        max-width: 230px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🌿 AUDIOGUIDA</h1>
-  <h2>Riserva Naturale Zompo lo Schioppo</h2>
-</header>
+  <section class="hero">
+    <div class="hero-content">
 
-<section class="intro">
-  <p>
-    Benvenuti nella Riserva Naturale Zompo lo Schioppo.
-    Ascolta le nove tappe e lasciati accompagnare alla scoperta
-    della natura, della storia e dei luoghi della Riserva.
-  </p>
-  <p>🎧 <strong>Scegli una tappa e inizia l'ascolto.</strong></p>
-</section>
+      <div class="logo-box">
+        <img src="Logo.svg" alt="Riserva Naturale Zompo lo Schioppo">
+      </div>
 
-<main class="container">
+      <h1 id="main-title">AUDIOGUIDA</h1>
+      <p id="subtitle">Riserva Naturale Zompo lo Schioppo</p>
 
-  <div class="tappa">
-    <div class="numero">Tappa 01</div>
-    <h3>Prima tappa</h3>
-    <button>▶ ASCOLTA</button>
+    </div>
+  </section>
+
+
+  <div class="language-switch">
+    <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">
+      🇮🇹 Italiano
+    </button>
+
+    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">
+      🇬🇧 English
+    </button>
   </div>
 
-  <div class="tappa">
-    <div class="numero">Tappa 02</div>
-    <h3>Seconda tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
 
-  <div class="tappa">
-    <div class="numero">Tappa 03</div>
-    <h3>Terza tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+  <section class="intro">
 
-  <div class="tappa">
-    <div class="numero">Tappa 04</div>
-    <h3>Quarta tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+    <h2 id="intro-title">
+      Benvenuti nella Riserva
+    </h2>
 
-  <div class="tappa">
-    <div class="numero">Tappa 05</div>
-    <h3>Quinta tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+    <p id="intro-text">
+      Ascolta l'introduzione e scegli una delle nove tappe
+      per scoprire la natura, la storia e la biodiversità
+      della Riserva Naturale Zompo lo Schioppo.
+    </p>
 
-  <div class="tappa">
-    <div class="numero">Tappa 06</div>
-    <h3>Sesta tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+  </section>
 
-  <div class="tappa">
-    <div class="numero">Tappa 07</div>
-    <h3>Settima tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
 
-  <div class="tappa">
-    <div class="numero">Tappa 08</div>
-    <h3>Ottava tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+  <main class="container">
 
-  <div class="tappa">
-    <div class="numero">Tappa 09</div>
-    <h3>Nona tappa</h3>
-    <button>▶ ASCOLTA</button>
-  </div>
+    <!-- BENVENUTO -->
+    <section class="welcome-card">
 
-</main>
+      <div class="small-label" id="welcome-label">
+        Introduzione
+      </div>
 
-<footer>
-  Riserva Naturale Zompo lo Schioppo · Morino (AQ)
-</footer>
+      <h3 id="welcome-title">
+        Benvenuto
+      </h3>
+
+      <audio
+        id="welcome-audio"
+        controls
+        preload="metadata"
+        src="999_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 1 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 01
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 1
+      </h3>
+
+      <audio
+        class="track"
+        data-number="001"
+        controls
+        preload="metadata"
+        src="001_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 2 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 02
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 2
+      </h3>
+
+      <audio
+        class="track"
+        data-number="002"
+        controls
+        preload="metadata"
+        src="002_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 3 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 03
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 3
+      </h3>
+
+      <audio
+        class="track"
+        data-number="003"
+        controls
+        preload="metadata"
+        src="003_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 4 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 04
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 4
+      </h3>
+
+      <audio
+        class="track"
+        data-number="004"
+        controls
+        preload="metadata"
+        src="004_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 5 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 05
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 5
+      </h3>
+
+      <audio
+        class="track"
+        data-number="005"
+        controls
+        preload="metadata"
+        src="005_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 6 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 06
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 6
+      </h3>
+
+      <audio
+        class="track"
+        data-number="006"
+        controls
+        preload="metadata"
+        src="006_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 7 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 07
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 7
+      </h3>
+
+      <audio
+        class="track"
+        data-number="007"
+        controls
+        preload="metadata"
+        src="007_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 8 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 08
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 8
+      </h3>
+
+      <audio
+        class="track"
+        data-number="008"
+        controls
+        preload="metadata"
+        src="008_ITA.mp3">
+      </audio>
+
+    </section>
+
+
+    <!-- TAPPA 9 -->
+    <section class="card">
+
+      <div class="small-label">
+        <span class="stage-word">Tappa</span> 09
+      </div>
+
+      <h3 class="stage-title">
+        Tappa 9
+      </h3>
+
+      <audio
+        class="track"
+        data-number="009"
+        controls
+        preload="metadata"
+        src="009_ITA.mp3">
+      </audio>
+
+    </section>
+
+  </main>
+
+
+  <footer id="footer-text">
+    Riserva Naturale Zompo lo Schioppo<br>
+    Morino · L'Aquila · Abruzzo
+  </footer>
+
+
+  <script>
+
+    const translations = {
+
+      it: {
+        mainTitle: "AUDIOGUIDA",
+        subtitle: "Riserva Naturale Zompo lo Schioppo",
+
+        introTitle: "Benvenuti nella Riserva",
+        introText:
+          "Ascolta l'introduzione e scegli una delle nove tappe per scoprire la natura, la storia e la biodiversità della Riserva Naturale Zompo lo Schioppo.",
+
+        welcomeLabel: "Introduzione",
+        welcomeTitle: "Benvenuto",
+
+        stageWord: "Tappa",
+        stageTitles: [
+          "Tappa 1",
+          "Tappa 2",
+          "Tappa 3",
+          "Tappa 4",
+          "Tappa 5",
+          "Tappa 6",
+          "Tappa 7",
+          "Tappa 8",
+          "Tappa 9"
+        ],
+
+        footer:
+          "Riserva Naturale Zompo lo Schioppo<br>Morino · L'Aquila · Abruzzo"
+      },
+
+      en: {
+        mainTitle: "AUDIO GUIDE",
+        subtitle: "Zompo lo Schioppo Nature Reserve",
+
+        introTitle: "Welcome to the Nature Reserve",
+        introText:
+          "Listen to the introduction and choose one of the nine stops to discover the nature, history and biodiversity of the Zompo lo Schioppo Nature Reserve.",
+
+        welcomeLabel: "Introduction",
+        welcomeTitle: "Welcome",
+
+        stageWord: "Stop",
+        stageTitles: [
+          "Stop 1",
+          "Stop 2",
+          "Stop 3",
+          "Stop 4",
+          "Stop 5",
+          "Stop 6",
+          "Stop 7",
+          "Stop 8",
+          "Stop 9"
+        ],
+
+        footer:
+          "Zompo lo Schioppo Nature Reserve<br>Morino · L'Aquila · Abruzzo · Italy"
+      }
+
+    };
+
+
+    function pauseAllAudio() {
+
+      document.querySelectorAll("audio").forEach(audio => {
+        audio.pause();
+      });
+
+    }
+
+
+    document.querySelectorAll("audio").forEach(audio => {
+
+      audio.addEventListener("play", function() {
+
+        document.querySelectorAll("audio").forEach(other => {
+
+          if (other !== audio) {
+            other.pause();
+          }
+
+        });
+
+      });
+
+    });
+
+
+    function setLanguage(lang) {
+
+      pauseAllAudio();
+
+      const t = translations[lang];
+
+      document.documentElement.lang = lang;
+
+      document.getElementById("main-title").textContent =
+        t.mainTitle;
+
+      document.getElementById("subtitle").textContent =
+        t.subtitle;
+
+      document.getElementById("intro-title").textContent =
+        t.introTitle;
+
+      document.getElementById("intro-text").textContent =
+        t.introText;
+
+      document.getElementById("welcome-label").textContent =
+        t.welcomeLabel;
+
+      document.getElementById("welcome-title").textContent =
+        t.welcomeTitle;
+
+      document.querySelectorAll(".stage-word").forEach(el => {
+        el.textContent = t.stageWord;
+      });
+
+      document.querySelectorAll(".stage-title").forEach(
+        (el, index) => {
+          el.textContent = t.stageTitles[index];
+        }
+      );
+
+      document.getElementById("footer-text").innerHTML =
+        t.footer;
+
+
+      const welcomeAudio =
+        document.getElementById("welcome-audio");
+
+      if (lang === "it") {
+
+        welcomeAudio.src = "999_ITA.mp3";
+
+      } else {
+
+        welcomeAudio.src = "999_ING.mp3";
+
+      }
+
+
+      document.querySelectorAll(".track").forEach(audio => {
+
+        const number = audio.dataset.number;
+
+        if (lang === "it") {
+
+          audio.src = number + "_ITA.mp3";
+
+        } else {
+
+          audio.src = number + "_ING.mp3";
+
+        }
+
+        audio.load();
+
+      });
+
+
+      welcomeAudio.load();
+
+
+      document.getElementById("btn-it")
+        .classList.toggle("active", lang === "it");
+
+      document.getElementById("btn-en")
+        .classList.toggle("active", lang === "en");
+
+
+      localStorage.setItem(
+        "zompoLanguage",
+        lang
+      );
+
+    }
+
+
+    const savedLanguage =
+      localStorage.getItem("zompoLanguage");
+
+    if (savedLanguage === "en") {
+
+      setLanguage("en");
+
+    } else {
+
+      setLanguage("it");
+
+    }
+
+  </script>
 
 </body>
 </html>
