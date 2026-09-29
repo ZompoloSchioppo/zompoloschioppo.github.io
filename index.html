@@ -1,766 +1,970 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#214f3a">
 
-  <title>Audioguida | Riserva Naturale Zompo lo Schioppo</title>
+<title>Audioguida | Riserva Naturale Zompo lo Schioppo</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    :root {
-      --green-dark: #244b37;
-      --green: #37694c;
-      --green-light: #78936f;
-      --cream: #f4f1e8;
-      --white: #ffffff;
-      --text: #263129;
-      --gold: #b87824;
-    }
+/* =========================
+   IMPOSTAZIONI GENERALI
+========================= */
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-    }
+:root{
+  --green:#214f3a;
+  --green-light:#6f8d79;
+  --cream:#f5f1e7;
+  --text:#243029;
+  --white:#ffffff;
+}
 
-    .hero {
-      position: relative;
-      min-height: 440px;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(18, 42, 29, 0.10),
-          rgba(18, 42, 29, 0.82)
-        ),
-        url("DSC_0049.JPG") center center / cover no-repeat;
+*{
+  box-sizing:border-box;
+}
 
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 30px 20px;
-      color: white;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    .hero-content {
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-      text-align: center;
-    }
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--cream);
+  color:var(--text);
+}
 
-    .logo-box {
-      background: rgba(255,255,255,0.92);
-      border-radius: 18px;
-      padding: 12px;
-      max-width: 270px;
-      margin: 0 auto 20px;
-    }
 
-    .logo-box img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 35px;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      margin: 8px 0 0;
-      font-size: 18px;
-      line-height: 1.4;
-    }
-
-    .language-switch {
-      max-width: 520px;
-      margin: -1px auto 0;
-      background: white;
-      display: flex;
-      padding: 12px;
-      gap: 10px;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 6px 18px rgba(0,0,0,.10);
-      border-radius: 0 0 20px 20px;
-    }
-
-    .lang-btn {
-      flex: 1;
-      padding: 13px 10px;
-      border: 2px solid var(--green);
-      border-radius: 30px;
-      background: white;
-      color: var(--green-dark);
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .lang-btn.active {
-      background: var(--green-dark);
-      color: white;
-    }
-
-    .intro {
-      max-width: 650px;
-      margin: 0 auto;
-      padding: 30px 22px 20px;
-      text-align: center;
-    }
-
-    .intro h2 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      color: var(--green-dark);
-    }
-
-    .intro p {
-      font-size: 17px;
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 650px;
-      margin: auto;
-      padding: 10px 18px 45px;
-    }
-
-    .welcome-card {
-      background: var(--green-dark);
-      color: white;
-      border-radius: 20px;
-      padding: 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,.13);
-    }
-
-    .welcome-card .small-label {
-      color: #d9e7dc;
-    }
-
-    .small-label {
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--green-light);
-    }
-
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 13px rgba(0,0,0,.08);
-    }
-
-    .card h3,
-    .welcome-card h3 {
-      margin: 6px 0 16px;
-      font-size: 21px;
-    }
-
-    audio {
-      width: 100%;
-      display: block;
-    }
-
-    footer {
-      background: var(--green-dark);
-      color: white;
-      text-align: center;
-      padding: 28px 20px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        min-height: 390px;
-      }
-
-      .hero h1 {
-        font-size: 31px;
-      }
-
-      .logo-box {
-        max-width: 230px;
-      }
-    }
-  </style>
-  /* BARRA ISTITUZIONALE */
+/* =========================
+   BARRA LOGHI
+========================= */
 
 .institutional-bar{
   width:100%;
   background:#ffffff;
-  border-bottom:1px solid #e7e7e7;
-  padding:10px 12px;
+  padding:10px 8px;
+  border-bottom:1px solid #e5e5e5;
 }
 
 .institutional-logos{
-  max-width:700px;
+  max-width:750px;
   margin:0 auto;
+
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:14px;
+  justify-content:space-around;
+
+  gap:10px;
 }
 
 .institutional-logos img{
   display:block;
-  max-width:100%;
   object-fit:contain;
 }
 
-.institutional-logos .logo-wide{
-  width:auto;
-  max-width:115px;
-  max-height:54px;
+/* Dendrocopos */
+.logo-dendrocopos{
+  max-width:105px;
+  max-height:52px;
 }
 
-.institutional-logos .logo-tall{
-  width:auto;
-  max-width:52px;
-  max-height:62px;
+/* Comune */
+.logo-comune{
+  max-width:46px;
+  max-height:58px;
 }
 
-.institutional-logos .logo-region{
-  width:auto;
-  max-width:100px;
-  max-height:54px;
+/* Regione */
+.logo-regione{
+  max-width:95px;
+  max-height:52px;
 }
 
-/* Smartphone */
+/* Legambiente */
+.logo-legambiente{
+  max-width:105px;
+  max-height:52px;
+}
+
+/* Riserva */
+.logo-riserva{
+  max-width:105px;
+  max-height:55px;
+}
+
+
+/* =========================
+   FOTO / HERO
+========================= */
+
+.hero{
+  position:relative;
+
+  min-height:430px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.68)
+    ),
+    url("DSC_0049.JPG") center 38% / cover no-repeat;
+
+  display:flex;
+  align-items:flex-end;
+
+  color:white;
+
+  padding:30px 20px;
+}
+
+.hero-content{
+  width:100%;
+  max-width:700px;
+  margin:0 auto;
+}
+
+.hero h1{
+  margin:0 0 8px;
+
+  font-size:38px;
+  line-height:1.05;
+
+  text-shadow:0 2px 12px rgba(0,0,0,.55);
+}
+
+.hero p{
+  margin:0;
+
+  font-size:19px;
+  line-height:1.4;
+
+  text-shadow:0 2px 10px rgba(0,0,0,.55);
+}
+
+
+/* =========================
+   SELETTORE LINGUA
+========================= */
+
+.language-section{
+  background:white;
+
+  position:sticky;
+  top:0;
+
+  z-index:50;
+
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.language-wrap{
+  max-width:700px;
+
+  margin:auto;
+
+  display:flex;
+
+  gap:10px;
+
+  padding:12px 16px;
+}
+
+.lang-btn{
+  flex:1;
+
+  border:2px solid var(--green);
+
+  background:white;
+  color:var(--green);
+
+  border-radius:30px;
+
+  padding:12px 8px;
+
+  font-weight:bold;
+  font-size:15px;
+
+  cursor:pointer;
+}
+
+.lang-btn.active{
+  background:var(--green);
+  color:white;
+}
+
+
+/* =========================
+   CONTENUTO
+========================= */
+
+main{
+  max-width:700px;
+
+  margin:auto;
+
+  padding:26px 16px 45px;
+}
+
+.intro{
+  text-align:center;
+
+  padding:5px 10px 22px;
+}
+
+.headphones{
+  font-size:35px;
+
+  margin-bottom:8px;
+}
+
+.intro h2{
+  margin:0 0 10px;
+
+  color:var(--green);
+
+  font-size:26px;
+}
+
+.intro p{
+  margin:0;
+
+  color:#536057;
+
+  font-size:16px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   BENVENUTO
+========================= */
+
+.welcome-card{
+  background:var(--green);
+
+  color:white;
+
+  padding:21px;
+
+  border-radius:20px;
+
+  margin-bottom:22px;
+
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+}
+
+.welcome-label{
+  font-size:12px;
+
+  font-weight:bold;
+
+  letter-spacing:1.4px;
+
+  text-transform:uppercase;
+
+  opacity:.8;
+}
+
+.welcome-card h3{
+  font-size:23px;
+
+  margin:6px 0 15px;
+}
+
+
+/* =========================
+   TAPPE
+========================= */
+
+.track{
+  background:white;
+
+  border-radius:20px;
+
+  margin-bottom:15px;
+
+  padding:18px;
+
+  box-shadow:0 5px 18px rgba(40,50,45,.08);
+
+  border:1px solid rgba(35,78,58,.06);
+}
+
+.track-top{
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  margin-bottom:14px;
+}
+
+.track-number{
+  min-width:50px;
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  color:white;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:17px;
+  font-weight:bold;
+}
+
+.track-text{
+  flex:1;
+}
+
+.track-label{
+  font-size:12px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  color:#76907e;
+
+  font-weight:bold;
+}
+
+.track-title{
+  font-size:20px;
+
+  margin-top:3px;
+
+  font-weight:bold;
+}
+
+
+/* =========================
+   PLAYER AUDIO
+========================= */
+
+audio{
+  display:block;
+
+  width:100%;
+
+  height:45px;
+}
+
+
+/* =========================
+   NOTA FINALE
+========================= */
+
+.info{
+  text-align:center;
+
+  background:#e7ede8;
+
+  border-radius:18px;
+
+  margin-top:26px;
+
+  padding:20px;
+
+  font-size:14px;
+
+  line-height:1.55;
+
+  color:#536057;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+
+  padding:5px 15px 38px;
+
+  color:#6e766f;
+
+  font-size:12px;
+}
+
+
+/* =========================
+   SMARTPHONE
+========================= */
+
 @media (max-width:520px){
 
   .institutional-bar{
-    padding:8px 7px;
+    padding:8px 5px;
   }
 
   .institutional-logos{
-    gap:7px;
+    gap:5px;
   }
 
-  .institutional-logos .logo-wide{
-    max-width:74px;
+  .logo-dendrocopos{
+    max-width:68px;
+    max-height:40px;
+  }
+
+  .logo-comune{
+    max-width:32px;
+    max-height:43px;
+  }
+
+  .logo-regione{
+    max-width:62px;
+    max-height:40px;
+  }
+
+  .logo-legambiente{
+    max-width:70px;
+    max-height:40px;
+  }
+
+  .logo-riserva{
+    max-width:70px;
     max-height:42px;
   }
 
-  .institutional-logos .logo-tall{
-    max-width:37px;
-    max-height:48px;
+  .hero{
+    min-height:410px;
+
+    padding:25px 20px;
   }
 
-  .institutional-logos .logo-region{
-    max-width:67px;
-    max-height:42px;
+  .hero h1{
+    font-size:35px;
   }
+
+  .hero p{
+    font-size:18px;
+  }
+
 }
+
+
+/* =========================
+   SCHERMI GRANDI
+========================= */
+
+@media (min-width:700px){
+
+  .hero{
+    min-height:520px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+}
+
+</style>
 </head>
 
+
 <body>
-<!-- BARRA LOGHI ISTITUZIONALI -->
+
+
+<!-- =========================
+     LOGHI ISTITUZIONALI
+========================= -->
+
 <div class="institutional-bar">
+
   <div class="institutional-logos">
 
-    <img src="Logo.svg"
-         alt="Dendrocopos"
-         class="logo-wide">
+    <img
+      src="Logo.svg"
+      class="logo-dendrocopos"
+      alt="Dendrocopos">
 
-    <img src="Logo Comune(1).jpg"
-         alt="Comune di Morino"
-         class="logo-tall">
+    <img
+      src="Logo Comune(1).jpg"
+      class="logo-comune"
+      alt="Comune di Morino">
 
-    <img src="Regione-Abruzzo-Stemma(1).svg"
-         alt="Regione Abruzzo"
-         class="logo-region">
+    <img
+      src="Regione-Abruzzo-Stemma(1).svg"
+      class="logo-regione"
+      alt="Regione Abruzzo">
 
-    <img src="logo legambiente.jpg"
-         alt="Legambiente"
-         class="logo-wide">
+    <img
+      src="logo legambiente.jpg"
+      class="logo-legambiente"
+      alt="Legambiente">
 
-    <img src="logo Riserva.jpg"
-         alt="Riserva Naturale Zompo lo Schioppo"
-         class="logo-wide">
+    <img
+      src="logo Riserva.jpg"
+      class="logo-riserva"
+      alt="Riserva Naturale Zompo lo Schioppo">
 
   </div>
+
 </div>
-  <section class="hero">
-    <div class="hero-content">
-
-      <div class="logo-box">
-        <img src="Logo.svg" alt="Riserva Naturale Zompo lo Schioppo">
-      </div>
-
-      <h1 id="main-title">AUDIOGUIDA</h1>
-      <p id="subtitle">Riserva Naturale Zompo lo Schioppo</p>
-
-    </div>
-  </section>
 
 
-  <div class="language-switch">
-    <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">
-      🇮🇹 Italiano
-    </button>
+<!-- =========================
+     FOTO PRINCIPALE
+========================= -->
 
-    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">
-      🇬🇧 English
-    </button>
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1 id="heroTitle">
+      Audioguida
+    </h1>
+
+    <p id="heroSubtitle">
+      Riserva Naturale Zompo lo Schioppo
+    </p>
+
   </div>
 
+</section>
+
+
+<!-- =========================
+     LINGUA
+========================= -->
+
+<section class="language-section">
+
+  <div class="language-wrap">
+
+    <button
+      class="lang-btn active"
+      id="btn-it"
+      type="button"
+      onclick="setLanguage('it')">
+
+      🇮🇹 Italiano
+
+    </button>
+
+    <button
+      class="lang-btn"
+      id="btn-en"
+      type="button"
+      onclick="setLanguage('en')">
+
+      🇬🇧 English
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     AUDIOGUIDA
+========================= -->
+
+<main>
 
   <section class="intro">
 
-    <h2 id="intro-title">
-      Benvenuti nella Riserva
+    <div class="headphones">
+      🎧
+    </div>
+
+    <h2 id="introTitle">
+      Scopri la Riserva
     </h2>
 
-    <p id="intro-text">
-      Ascolta l'introduzione e scegli una delle nove tappe
-      per scoprire la natura, la storia e la biodiversità
-      della Riserva Naturale Zompo lo Schioppo.
+    <p id="introText">
+      Ascolta il racconto del territorio e lasciati accompagnare
+      lungo il percorso. Scegli una tappa e premi play.
     </p>
 
   </section>
 
 
-  <main class="container">
+  <!-- BENVENUTO -->
 
-    <!-- BENVENUTO -->
-    <section class="welcome-card">
+  <section class="welcome-card">
 
-      <div class="small-label" id="welcome-label">
-        Introduzione
+    <div
+      class="welcome-label"
+      id="welcomeLabel">
+
+      Introduzione
+
+    </div>
+
+    <h3 id="welcomeTitle">
+      Benvenuto nella Riserva
+    </h3>
+
+    <audio
+      id="welcomeAudio"
+      controls
+      preload="metadata">
+
+      <source
+        src="999_ITA.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+  </section>
+
+
+  <!-- LE 9 TAPPE VENGONO CREATE AUTOMATICAMENTE -->
+
+  <section id="tracks"></section>
+
+
+  <div
+    class="info"
+    id="infoText">
+
+    🎧 Per una migliore esperienza ti consigliamo di utilizzare
+    gli auricolari e di mantenere un volume rispettoso
+    dell'ambiente naturale.
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  Riserva Naturale Zompo lo Schioppo · Morino (AQ)
+
+</footer>
+
+
+<script>
+
+/* =========================
+   TESTI ITALIANO / INGLESE
+========================= */
+
+const texts = {
+
+  it: {
+
+    heroTitle:
+      "Audioguida",
+
+    heroSubtitle:
+      "Riserva Naturale Zompo lo Schioppo",
+
+    introTitle:
+      "Scopri la Riserva",
+
+    introText:
+      "Ascolta il racconto del territorio e lasciati accompagnare lungo il percorso. Scegli una tappa e premi play.",
+
+    welcomeLabel:
+      "Introduzione",
+
+    welcomeTitle:
+      "Benvenuto nella Riserva",
+
+    stop:
+      "Tappa",
+
+    listen:
+      "Ascolto",
+
+    info:
+      "🎧 Per una migliore esperienza ti consigliamo di utilizzare gli auricolari e di mantenere un volume rispettoso dell'ambiente naturale."
+
+  },
+
+
+  en: {
+
+    heroTitle:
+      "Audio Guide",
+
+    heroSubtitle:
+      "Zompo lo Schioppo Nature Reserve",
+
+    introTitle:
+      "Discover the Nature Reserve",
+
+    introText:
+      "Listen to the story of this extraordinary landscape and let the audio guide accompany you along the trail. Choose a stop and press play.",
+
+    welcomeLabel:
+      "Introduction",
+
+    welcomeTitle:
+      "Welcome to the Nature Reserve",
+
+    stop:
+      "Stop",
+
+    listen:
+      "Listen",
+
+    info:
+      "🎧 For the best experience, we recommend using headphones and keeping the volume respectful of the natural environment."
+
+  }
+
+};
+
+
+/* =========================
+   LINGUA MEMORIZZATA
+========================= */
+
+let currentLanguage =
+  localStorage.getItem("zompoLanguage") || "it";
+
+
+/* =========================
+   CREA LE 9 TAPPE
+========================= */
+
+function createTracks(){
+
+  const container =
+    document.getElementById("tracks");
+
+  container.innerHTML = "";
+
+  const languageCode =
+    currentLanguage === "it"
+      ? "ITA"
+      : "ING";
+
+
+  for(let i = 1; i <= 9; i++){
+
+    const number =
+      String(i).padStart(3,"0");
+
+    const displayNumber =
+      String(i).padStart(2,"0");
+
+
+    const card =
+      document.createElement("div");
+
+    card.className = "track";
+
+
+    card.innerHTML = `
+
+      <div class="track-top">
+
+        <div class="track-number">
+          ${displayNumber}
+        </div>
+
+        <div class="track-text">
+
+          <div class="track-label">
+            ${texts[currentLanguage].stop} ${i}
+          </div>
+
+          <div class="track-title">
+            ${texts[currentLanguage].listen} ${i}
+          </div>
+
+        </div>
+
       </div>
 
-      <h3 id="welcome-title">
-        Benvenuto
-      </h3>
 
       <audio
-        id="welcome-audio"
         controls
         preload="metadata"
-        src="999_ITA.mp3">
+        src="${number}_${languageCode}.mp3">
       </audio>
 
-    </section>
+    `;
 
 
-    <!-- TAPPA 1 -->
-    <section class="card">
+    container.appendChild(card);
 
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 01
-      </div>
+  }
 
-      <h3 class="stage-title">
-        Tappa 1
-      </h3>
 
-      <audio
-        class="track"
-        data-number="001"
-        controls
-        preload="metadata"
-        src="001_ITA.mp3">
-      </audio>
+  setupAudio();
 
-    </section>
+}
 
 
-    <!-- TAPPA 2 -->
-    <section class="card">
+/* =========================
+   CAMBIO LINGUA
+========================= */
 
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 02
-      </div>
+function setLanguage(lang){
 
-      <h3 class="stage-title">
-        Tappa 2
-      </h3>
+  /* ferma eventuali audio */
 
-      <audio
-        class="track"
-        data-number="002"
-        controls
-        preload="metadata"
-        src="002_ITA.mp3">
-      </audio>
+  document
+    .querySelectorAll("audio")
+    .forEach(audio => {
 
-    </section>
-
-
-    <!-- TAPPA 3 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 03
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 3
-      </h3>
-
-      <audio
-        class="track"
-        data-number="003"
-        controls
-        preload="metadata"
-        src="003_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 4 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 04
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 4
-      </h3>
-
-      <audio
-        class="track"
-        data-number="004"
-        controls
-        preload="metadata"
-        src="004_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 5 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 05
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 5
-      </h3>
-
-      <audio
-        class="track"
-        data-number="005"
-        controls
-        preload="metadata"
-        src="005_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 6 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 06
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 6
-      </h3>
-
-      <audio
-        class="track"
-        data-number="006"
-        controls
-        preload="metadata"
-        src="006_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 7 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 07
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 7
-      </h3>
-
-      <audio
-        class="track"
-        data-number="007"
-        controls
-        preload="metadata"
-        src="007_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 8 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 08
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 8
-      </h3>
-
-      <audio
-        class="track"
-        data-number="008"
-        controls
-        preload="metadata"
-        src="008_ITA.mp3">
-      </audio>
-
-    </section>
-
-
-    <!-- TAPPA 9 -->
-    <section class="card">
-
-      <div class="small-label">
-        <span class="stage-word">Tappa</span> 09
-      </div>
-
-      <h3 class="stage-title">
-        Tappa 9
-      </h3>
-
-      <audio
-        class="track"
-        data-number="009"
-        controls
-        preload="metadata"
-        src="009_ITA.mp3">
-      </audio>
-
-    </section>
-
-  </main>
-
-
-  <footer id="footer-text">
-    Riserva Naturale Zompo lo Schioppo<br>
-    Morino · L'Aquila · Abruzzo
-  </footer>
-
-
-  <script>
-
-    const translations = {
-
-      it: {
-        mainTitle: "AUDIOGUIDA",
-        subtitle: "Riserva Naturale Zompo lo Schioppo",
-
-        introTitle: "Benvenuti nella Riserva",
-        introText:
-          "Ascolta l'introduzione e scegli una delle nove tappe per scoprire la natura, la storia e la biodiversità della Riserva Naturale Zompo lo Schioppo.",
-
-        welcomeLabel: "Introduzione",
-        welcomeTitle: "Benvenuto",
-
-        stageWord: "Tappa",
-        stageTitles: [
-          "Tappa 1",
-          "Tappa 2",
-          "Tappa 3",
-          "Tappa 4",
-          "Tappa 5",
-          "Tappa 6",
-          "Tappa 7",
-          "Tappa 8",
-          "Tappa 9"
-        ],
-
-        footer:
-          "Riserva Naturale Zompo lo Schioppo<br>Morino · L'Aquila · Abruzzo"
-      },
-
-      en: {
-        mainTitle: "AUDIO GUIDE",
-        subtitle: "Zompo lo Schioppo Nature Reserve",
-
-        introTitle: "Welcome to the Nature Reserve",
-        introText:
-          "Listen to the introduction and choose one of the nine stops to discover the nature, history and biodiversity of the Zompo lo Schioppo Nature Reserve.",
-
-        welcomeLabel: "Introduction",
-        welcomeTitle: "Welcome",
-
-        stageWord: "Stop",
-        stageTitles: [
-          "Stop 1",
-          "Stop 2",
-          "Stop 3",
-          "Stop 4",
-          "Stop 5",
-          "Stop 6",
-          "Stop 7",
-          "Stop 8",
-          "Stop 9"
-        ],
-
-        footer:
-          "Zompo lo Schioppo Nature Reserve<br>Morino · L'Aquila · Abruzzo · Italy"
-      }
-
-    };
-
-
-    function pauseAllAudio() {
-
-      document.querySelectorAll("audio").forEach(audio => {
-        audio.pause();
-      });
-
-    }
-
-
-    document.querySelectorAll("audio").forEach(audio => {
-
-      audio.addEventListener("play", function() {
-
-        document.querySelectorAll("audio").forEach(other => {
-
-          if (other !== audio) {
-            other.pause();
-          }
-
-        });
-
-      });
+      audio.pause();
 
     });
 
 
-    function setLanguage(lang) {
-
-      pauseAllAudio();
-
-      const t = translations[lang];
-
-      document.documentElement.lang = lang;
-
-      document.getElementById("main-title").textContent =
-        t.mainTitle;
-
-      document.getElementById("subtitle").textContent =
-        t.subtitle;
-
-      document.getElementById("intro-title").textContent =
-        t.introTitle;
-
-      document.getElementById("intro-text").textContent =
-        t.introText;
-
-      document.getElementById("welcome-label").textContent =
-        t.welcomeLabel;
-
-      document.getElementById("welcome-title").textContent =
-        t.welcomeTitle;
-
-      document.querySelectorAll(".stage-word").forEach(el => {
-        el.textContent = t.stageWord;
-      });
-
-      document.querySelectorAll(".stage-title").forEach(
-        (el, index) => {
-          el.textContent = t.stageTitles[index];
-        }
-      );
-
-      document.getElementById("footer-text").innerHTML =
-        t.footer;
+  currentLanguage = lang;
 
 
-      const welcomeAudio =
-        document.getElementById("welcome-audio");
+  localStorage.setItem(
+    "zompoLanguage",
+    lang
+  );
 
-      if (lang === "it") {
 
-        welcomeAudio.src = "999_ITA.mp3";
+  document.documentElement.lang =
+    lang === "it"
+      ? "it"
+      : "en";
 
-      } else {
 
-        welcomeAudio.src = "999_ING.mp3";
+  /* pulsanti lingua */
+
+  document
+    .getElementById("btn-it")
+    .classList.toggle(
+      "active",
+      lang === "it"
+    );
+
+
+  document
+    .getElementById("btn-en")
+    .classList.toggle(
+      "active",
+      lang === "en"
+    );
+
+
+  /* testi */
+
+  document
+    .getElementById("heroTitle")
+    .textContent =
+      texts[lang].heroTitle;
+
+
+  document
+    .getElementById("heroSubtitle")
+    .textContent =
+      texts[lang].heroSubtitle;
+
+
+  document
+    .getElementById("introTitle")
+    .textContent =
+      texts[lang].introTitle;
+
+
+  document
+    .getElementById("introText")
+    .textContent =
+      texts[lang].introText;
+
+
+  document
+    .getElementById("welcomeLabel")
+    .textContent =
+      texts[lang].welcomeLabel;
+
+
+  document
+    .getElementById("welcomeTitle")
+    .textContent =
+      texts[lang].welcomeTitle;
+
+
+  document
+    .getElementById("infoText")
+    .textContent =
+      texts[lang].info;
+
+
+  /* audio benvenuto */
+
+  const welcome =
+    document.getElementById("welcomeAudio");
+
+
+  welcome.src =
+    lang === "it"
+      ? "999_ITA.mp3"
+      : "999_ING.mp3";
+
+
+  welcome.load();
+
+
+  /* ricrea le nove tappe */
+
+  createTracks();
+
+}
+
+
+/* =========================
+   UN SOLO AUDIO ALLA VOLTA
+========================= */
+
+function setupAudio(){
+
+  const audios =
+    document.querySelectorAll("audio");
+
+
+  audios.forEach(audio => {
+
+    audio.addEventListener(
+      "play",
+      function(){
+
+        document
+          .querySelectorAll("audio")
+          .forEach(other => {
+
+            if(other !== audio){
+
+              other.pause();
+
+            }
+
+          });
 
       }
+    );
+
+  });
+
+}
 
 
-      document.querySelectorAll(".track").forEach(audio => {
+/* =========================
+   AVVIO
+========================= */
 
-        const number = audio.dataset.number;
+setLanguage(currentLanguage);
 
-        if (lang === "it") {
+</script>
 
-          audio.src = number + "_ITA.mp3";
-
-        } else {
-
-          audio.src = number + "_ING.mp3";
-
-        }
-
-        audio.load();
-
-      });
-
-
-      welcomeAudio.load();
-
-
-      document.getElementById("btn-it")
-        .classList.toggle("active", lang === "it");
-
-      document.getElementById("btn-en")
-        .classList.toggle("active", lang === "en");
-
-
-      localStorage.setItem(
-        "zompoLanguage",
-        lang
-      );
-
-    }
-
-
-    const savedLanguage =
-      localStorage.getItem("zompoLanguage");
-
-    if (savedLanguage === "en") {
-
-      setLanguage("en");
-
-    } else {
-
-      setLanguage("it");
-
-    }
-
-  </script>
 
 </body>
 </html>
