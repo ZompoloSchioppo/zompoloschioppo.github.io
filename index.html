@@ -201,10 +201,103 @@
       }
     }
   </style>
+  /* BARRA ISTITUZIONALE */
+
+.institutional-bar{
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid #e7e7e7;
+  padding:10px 12px;
+}
+
+.institutional-logos{
+  max-width:700px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.institutional-logos img{
+  display:block;
+  max-width:100%;
+  object-fit:contain;
+}
+
+.institutional-logos .logo-wide{
+  width:auto;
+  max-width:115px;
+  max-height:54px;
+}
+
+.institutional-logos .logo-tall{
+  width:auto;
+  max-width:52px;
+  max-height:62px;
+}
+
+.institutional-logos .logo-region{
+  width:auto;
+  max-width:100px;
+  max-height:54px;
+}
+
+/* Smartphone */
+@media (max-width:520px){
+
+  .institutional-bar{
+    padding:8px 7px;
+  }
+
+  .institutional-logos{
+    gap:7px;
+  }
+
+  .institutional-logos .logo-wide{
+    max-width:74px;
+    max-height:42px;
+  }
+
+  .institutional-logos .logo-tall{
+    max-width:37px;
+    max-height:48px;
+  }
+
+  .institutional-logos .logo-region{
+    max-width:67px;
+    max-height:42px;
+  }
+}
 </head>
 
 <body>
+<!-- BARRA LOGHI ISTITUZIONALI -->
+<div class="institutional-bar">
+  <div class="institutional-logos">
 
+    <img src="Logo.svg"
+         alt="Dendrocopos"
+         class="logo-wide">
+
+    <img src="Logo Comune(1).jpg"
+         alt="Comune di Morino"
+         class="logo-tall">
+
+    <img src="Regione-Abruzzo-Stemma(1).svg"
+         alt="Regione Abruzzo"
+         class="logo-region">
+
+    <img src="logo legambiente.jpg"
+         alt="Legambiente"
+         class="logo-wide">
+
+    <img src="logo Riserva.jpg"
+         alt="Riserva Naturale Zompo lo Schioppo"
+         class="logo-wide">
+
+  </div>
+</div>
   <section class="hero">
     <div class="hero-content">
 
