@@ -730,7 +730,32 @@ const texts = {
 let currentLanguage =
   localStorage.getItem("zompoLanguage") || "it";
 
+const trackTitles = {
+  it: [
+    "Parcheggio Lo Schioppo",
+    "Fonte della Volpe",
+    "Area faunistica del Capriolo",
+    "Il Bosco",
+    "Piazzale Lo Schioppo",
+    "Il Vecchio Albero",
+    "La Faggeta",
+    "Il Fiume",
+    "La Diga"
+  ],
 
+  en: [
+    "Lo Schioppo Parking Area",
+    "The Source of the Fox",
+    "Faunal Area of the Roe Deer",
+    "The Woods",
+    "Lo Schioppo Square",
+    "The Old Tree",
+    "The Beech Wood",
+    "The River",
+    "The Dam"
+  ]
+};
+   
 /* =========================
    CREA LE 9 TAPPE
 ========================= */
@@ -777,9 +802,9 @@ function createTracks(){
             ${texts[currentLanguage].stop} ${i}
           </div>
 
-          <div class="track-title">
-            ${texts[currentLanguage].listen} ${i}
-          </div>
+        <div class="track-title">
+  ${trackTitles[currentLanguage][i - 1]}
+</div>
 
         </div>
 
